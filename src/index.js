@@ -1,14 +1,45 @@
+// import React, { Component } from 'react';
+// import {
+//   AppRegistry,
+//   StyleSheet,
+//   Text,
+//   View,
+//   Navigator
+// } from 'react-native';
+// import Login from './Login/Login';
+// import NavAllDay from './text/test';
+
+
+// const TravelTracker = () => (
+//   <NavAllDay/>
+// );
+
+// AppRegistry.registerComponent('TravelTracker', () => TravelTracker);
 import React, { Component } from 'react';
 import {
   AppRegistry,
-  StyleSheet,
-  Text,
-  View
 } from 'react-native';
-import Login from './Login/Login';
+import App from './text/test'
+import { StackNavigator } from 'react-navigation';
+import SecondScreen from './registered/page1'
 
-const TravelTracker = () => (
-    <Login/>
-);
+class TravelTracker extends Component {
+  static navigationOptions = {
+    title: 'Home Screen',
+  };
 
-AppRegistry.registerComponent('TravelTracker', () => TravelTracker);
+  render(){
+    const { navigation } = this.props;
+
+    return (
+      <App navigation={ navigation }/>
+    );
+  }
+}
+
+const SimpleApp = StackNavigator({
+  Home: { screen: TravelTracker },
+  SecondScreen: { screen: SecondScreen, title: 'ss' },
+});
+
+AppRegistry.registerComponent('TravelTracker', () => SimpleApp);
