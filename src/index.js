@@ -21,7 +21,7 @@ import {
 } from 'react-native';
 import App from './text/test'
 import { StackNavigator } from 'react-navigation';
-import SecondScreen from './registered/page1'
+import SecondScreen from './registered/registered'
 
 class TravelTracker extends Component {
   static navigationOptions = {

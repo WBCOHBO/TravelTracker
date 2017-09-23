@@ -129,69 +129,116 @@
   
 // // }
 
+// import React, { Component } from 'react';
+// import {
+//   StyleSheet,
+//   View,
+//   Text,
+//   Navigator
+// } from 'react-native';
+// import StackNavigator from 'react-navigation';
+// // const {
+// //     Router,
+// //     Route 
+// // } = Navigator;
+
+// import registered from '../registered/registered';
+
+
+// export default (props) => {
+//   let renderScene = (route, nav) => {
+//     let onBack = () => {
+//       nav.pop();
+//     }
+//     switch (route.id) {
+//       case 'registered':
+//         return <Page1 onBack={onBack}/>;
+//       case 'simple2':
+//         return <Page2 onBack={onBack}/>;
+//       case 'simple3':
+//         return <Page3 onBack={onBack}/>;
+//       default:
+//         return (
+//           <View style={styles.center}>
+//             {/* <ButtonSample buttonText={'Page 1'} onPress={() => nav.push({id: 'registered', })} />
+//             <ButtonSample buttonText={'Page 2'} onPress={() => nav.push({id: 'simple2', })} />
+//             <ButtonSample buttonText={'Page 3'} onPress={() => nav.push({id: 'simple3', })} /> */}
+//           <TouchableOpacity onPress={() => nav.push({id: 'registered', })} />
+//           </View>
+//         )
+//     }
+//   }
+
+//   let configureScene = (route, routeStack) => {
+//     switch (route.id) {
+//       case 'registered':
+//         return Navigator.SceneConfigs.VerticalDownSwipeJump
+//       default:
+//         return Navigator.SceneConfigs.PushFromRight;
+//     }
+//   }
+
+//   return (
+//     <Navigator
+//       style={{ flex: 1 }}
+//       initialRoute={{}}
+//       configureScene={configureScene}
+//       renderScene={renderScene}
+//     />
+//   )
+// }
+
+// const styles = StyleSheet.create({
+//   center: {
+//     flex: 1,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//   },
+// });
+
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  View,
   Text,
-  Navigator
+  Button,
+  View
 } from 'react-native';
-import StackNavigator from 'react-navigation';
-// const {
-//     Router,
-//     Route 
-// } = Navigator;
-
-import registered from '../registered/registered';
-
-
-export default (props) => {
-  let renderScene = (route, nav) => {
-    let onBack = () => {
-      nav.pop();
-    }
-    switch (route.id) {
-      case 'registered':
-        return <Page1 onBack={onBack}/>;
-      case 'simple2':
-        return <Page2 onBack={onBack}/>;
-      case 'simple3':
-        return <Page3 onBack={onBack}/>;
-      default:
-        return (
-          <View style={styles.center}>
-            {/* <ButtonSample buttonText={'Page 1'} onPress={() => nav.push({id: 'registered', })} />
-            <ButtonSample buttonText={'Page 2'} onPress={() => nav.push({id: 'simple2', })} />
-            <ButtonSample buttonText={'Page 3'} onPress={() => nav.push({id: 'simple3', })} /> */}
-          <TouchableOpacity onPress={() => nav.push({id: 'registered', })} />
-          </View>
-        )
-    }
-  }
-
-  let configureScene = (route, routeStack) => {
-    switch (route.id) {
-      case 'registered':
-        return Navigator.SceneConfigs.VerticalDownSwipeJump
-      default:
-        return Navigator.SceneConfigs.PushFromRight;
-    }
-  }
-
-  return (
-    <Navigator
-      style={{ flex: 1 }}
-      initialRoute={{}}
-      configureScene={configureScene}
-      renderScene={renderScene}
-    />
-  )
-}
+import { StackNavigator } from 'react-navigation';
+import SecondScreen from '../registered/registered'
 
 const styles = StyleSheet.create({
-  center: {
+  container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
   },
 });
+
+const App = (props)  => {
+  const { navigate } = props.navigation;
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.welcome}>
+        Welcome to React Native Navigation Sample!
+      </Text>
+      <Button
+          onPress={() => navigate('SecondScreen')}
+          title="Go to Second Screen"
+        />
+    </View>
+  );
+}
+
+export default App
