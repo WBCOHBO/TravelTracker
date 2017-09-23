@@ -51,4 +51,6 @@
 // });
 
 // AppRegistry.registerComponent('TravelTracker', () => TravelTracker);
-import './src';
+
+
+import './src/index';

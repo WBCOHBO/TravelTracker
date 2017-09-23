@@ -201,7 +201,8 @@ import {
   StyleSheet,
   Text,
   Button,
-  View
+  View,
+  TextInput
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import SecondScreen from '../registered/registered'
@@ -226,19 +227,36 @@ const styles = StyleSheet.create({
 });
 
 const App = (props)  => {
+// class App extends Component {
   const { navigate } = props.navigation;
+  // constructor(props) {
+  //       super(props);
+  //       this.state = {text: ''};
+  // }
 
+  // render(){
+    // const { navigate } = props.navigation;
   return (
     <View style={styles.container}>
-      <Text style={styles.welcome}>
-        Welcome to React Native Navigation Sample!
-      </Text>
+      <View>
+        <TextInput
+           style={styles.TextInput}
+           placeholder="user name."
+           onChangeText={(text) => this.setState({text})}
+         />
+         <TextInput
+           style={styles.TextInput}
+           placeholder="password."
+           onChangeText={(text) => this.setState({text})}
+         />
+      </View>
       <Button
           onPress={() => navigate('SecondScreen')}
-          title="Go to Second Screen"
+          title="Go"
         />
     </View>
   );
+// }
 }
 
 export default App
