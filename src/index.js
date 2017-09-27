@@ -83,10 +83,12 @@ import DemoLightbox from './components/lightbox/DemoLightbox';
 import MenuIcon from './images/menu_burger.png';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1, backgroundColor: 'transparent', justifyContent: 'center',
-    alignItems: 'center',
-  },
+  // container: {
+  //   flex: 1, 
+  //   backgroundColor: 'blue',
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  // },
   tabBarStyle: {
     backgroundColor: '#eee',
   },
@@ -101,7 +103,7 @@ const reducerCreate = params => {
     console.log('ACTION:', action);
     return defaultReducer(state, action);
   };
-};
+};  //啥意思
 
 const getSceneStyle = () => ({
   backgroundColor: '#F5FCFF',
@@ -157,8 +159,9 @@ const Example = () => (
                   tabBarStyle={styles.tabBarStyle}
                   activeBackgroundColor="white"
                   inactiveBackgroundColor="rgba(255, 0, 0, 0.5)"
+                  tabBarPosition={"bottom"}
                 >
-                  <Stack
+                  {/* <Stack
                     key="tab_1"
                     title="Tab #1"
                     tabBarLabel="TAB #1"
@@ -184,45 +187,53 @@ const Example = () => (
                       back
                       titleStyle={{ color: 'black', alignSelf: 'center' }}
                     />
-                  </Stack>
+                  </Stack> */}
 
-                  <Stack
+                  {/* <Stack
                     key="tab_2"
-                    title="Tab #2"
+                    title="主頁"
                     icon={TabIcon}
                     initial
                   >
                     <Scene
                       key="tab_2_1"
                       component={TabView}
-                      title="Tab #2_1"
-                      renderRightButton={() => <Text>Right</Text>}
-                    />
-                    <Scene
+                      title=""
+                      leftTitle="編輯"
+                      onLeft={() => { }}
+                      
+                    /> */}
+                    {/* <Scene
                       key="tab_2_2"
                       component={TabView}
                       title="Tab #2_2"
                       onBack={() => alert('onBack button!')}
                       backTitle="Back!"
                       panHandlers={null}
+                    /> */}
+                  {/* </Stack> */}
+
+                  <Stack 
+                    key="tab_3"
+                    title="主頁"
+                    icon={TabIcon}
+                    initial
+                  >
+                    <Scene
+                      component={TabView}
+                      key="tab_3_1"
+                      title=""
+                      leftTitle="編輯"
+                      onLeft={() => { }}
                     />
                   </Stack>
 
-                  <Stack key="tab_3">
-                    <Scene
-                      key="tab_3_1"
-                      component={TabView}
-                      title="Tab #3"
-                      icon={TabIcon}
-                      rightTitle="Right3"
-                      onRight={() => { }}
-                    />
-                  </Stack>
-                  <Stack key="tab_4">
+                  {/* <Stack key="tab_4">
                     <Scene key="tab_4_1" component={TabView} title="Tab #4" hideNavBar icon={TabIcon} />
-                  </Stack>
+                  </Stack> */}
                   <Stack key="tab_5">
-                    <Scene key="tab_5_1" component={TabView} title="Tab #5" icon={TabIcon} />
+                    <Scene key="tab_5_1" component={TabView} title="設定" icon={TabIcon} leftTitle=""
+                      onLeft={() => { }} />
                   </Stack>
                 </Tabs>
               </Scene>
