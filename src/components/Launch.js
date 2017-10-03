@@ -56,7 +56,7 @@ class Launch extends React.Component {
          />
         <View style={styles.buttonContainer}>
           {/* <Text>Welcome</Text> */}
-          {/* <Button title="Go to Login" onPress={() => Actions.login({ data: 'Custom data', title: 'Custom title' })} /> */}
+          <Button title="登入" onPress={() => Actions.login({ data: '', title: '' })} />
           {/* <Button title="Go to Register page" onPress={Actions.register} /> */}
           {/* <Button title="Display Error Modal" onPress={Actions.error} /> */}
           {/* <Button title="Display Lightbox" onPress={Actions.demo_lightbox} /> */}
@@ -70,7 +70,7 @@ class Launch extends React.Component {
               // Or check `index.ios.js` or `index.android.js` for a complete example
             })}
           /> */}
-          <Button style={styles.button} title="登入" onPress={Actions.drawer} />
+          {/* <Button style={styles.button} title="登入" onPress={Actions.drawer} /> */}
         </View>
       </View>
     );
