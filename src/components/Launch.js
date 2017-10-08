@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button, TextInput } from 'react-native';
+import { View, Text, StyleSheet, Button, TextInput, TouchableOpacity  } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { MessageBarManager } from 'react-native-message-bar';
 
@@ -7,20 +7,29 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    // alignItems: 'center',
+    alignItems: 'center',
     // backgroundColor: 'transparent',
+    
   },
-  TextInput: {
-        height:40,
-        marginLeft: 40,
-        marginRight: 60,
+  TextTitle: {
+    textAlign: 'center',
+    fontSize: 30,
+  },
+  SmallTitle:{
+    height:60,
+    textAlign: 'center',
+    fontSize: 20,
+  },
+  or:{
+    textAlign: 'center',
+    fontSize: 15,
   },
   buttonContainer:{
     // flex: 1,
-    justifyContent: 'flex-end',
-    // alignItems: 'center',
-    alignItems: 'flex-end',
-    right: 65,
+    // marginLeft: 100,
+    // marginRight: 100,
+    borderRadius: 1,
+    
   },
   // button: {
   //   marginLeft: 200,
@@ -34,43 +43,24 @@ const styles = StyleSheet.create({
 });
 
 class Launch extends React.Component {
-  static onEnter = () => {
-    Actions.refresh({
-      title: '',
-      rightTitle: 'rightTitle',
-      onRight: () => {},
-    });
-  };
+  
   render() {
     return (
-      <View {...this.props} style={styles.container}>
-        <TextInput
-           style={styles.TextInput}
-           placeholder="user name."
-           onChangeText={(text) => this.setState({text})}
-         />
-         <TextInput
-           style={styles.TextInput}
-           placeholder="password."
-           onChangeText={(text) => this.setState({text})}
-         />
+      <View style={styles.container}>
+        <Text style={styles.TextTitle}>智慧行車趣</Text>
+        <Text style={styles.SmallTitle}>Travel Tracker</Text>
         <View style={styles.buttonContainer}>
-          {/* <Text>Welcome</Text> */}
-          <Button title="登入" onPress={() => Actions.login({ data: '', title: '' })} />
-          {/* <Button title="Go to Register page" onPress={Actions.register} /> */}
-          {/* <Button title="Display Error Modal" onPress={Actions.error} /> */}
-          {/* <Button title="Display Lightbox" onPress={Actions.demo_lightbox} /> */}
-          {/* <Button
-            title="MessageBar alert"
-            onPress={() => MessageBarManager.showAlert({
-              title: 'Your alert title goes here',
-              message: 'Your alert message goes here',
-              alertType: 'success',
-              // See Properties section for full customization
-              // Or check `index.ios.js` or `index.android.js` for a complete example
-            })}
-          /> */}
-          {/* <Button style={styles.button} title="登入" onPress={Actions.drawer} /> */}
+        <Button 
+        title="登入" onPress={() => Actions.login({ data: '', title: '' })}
+        color="#81D8D0"
+         />
+        <Text style={styles.or}>----------------------或----------------------</Text>
+          <Button style={{}} title="使用facebook登入" onPress={Actions.login} />
+        <View>
+        <TouchableOpacity onPress={Actions.register}>
+           <Text style={{height: 80, textAlign: 'center',}}> 沒有帳號？點我註冊 </Text>
+        </TouchableOpacity>
+        </View>
         </View>
       </View>
     );
