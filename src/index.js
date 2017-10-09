@@ -123,6 +123,12 @@ const Example = () => (
         
         {/* 這才是Login */}
         <Stack key="login" titleStyle={{ alignSelf: 'center' }} hideNavBar>
+          <Scene
+            key="searchFriend"
+            component={Login}
+            leftTitle="Cancel"
+            onLeft={Actions.pop}
+          />
           <Tabs
             swipeEnabled
             showLabel={false}
@@ -131,13 +137,13 @@ const Example = () => (
             inactiveBackgroundColor="rgba(255, 0, 0, 0.5)"
             tabBarPosition={"bottom"}
           >
-          <Stack key="tab_3">
-            <Scene key="tab_3_1" component={Menu} back title="主頁" icon={TabIcon} 
+          <Stack key="MenuModal">
+            <Scene key="MenuModal_2" component={Menu} back title="主頁" icon={TabIcon} 
             onLeft={() => alert('Left button!')} leftTitle="Left" />
           </Stack>
 
-          <Stack key="tab_5">
-            <Scene key="tab_5_1" component={Setting} title="設定" icon={TabIcon} leftTitle=""
+          <Stack key="SettingModal">
+            <Scene key="SettingModal_2" component={Setting} title="設定" icon={TabIcon} leftTitle=""
             onLeft={() => { }} />
           </Stack>
           </Tabs>

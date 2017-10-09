@@ -10,54 +10,30 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#F5FCFF",
   },
-  welcome: {
+  TextTitle:{
+    fontSize: 30,
+    right:100,
+  },
+  SmallTitle:{
+    height:50,
+    right:50,
     fontSize: 20,
-    textAlign: "center",
-    margin: 10,
   },
-  instructions: {
-    textAlign: "center",
-    color: "#333333",
-    marginBottom: 5,
-  },
+  LastNextStep:{
+    flexDirection: 'row',    
+  }
 });
 
 export default class extends React.Component {
-  static onEnter = () => {
-    Actions.refresh({
-      title: '',
-      rightTitle: 'rightTitle',
-      onRight: () => {},
-    });
-  };
-
-  constructor(props) {
-    super(props);
-    this.state = {text: ''};
-  }
-
   render() {
-    const title = this.props.title || 'No Title';
-    const data = this.props.data || 'No Data';
-    console.log("Login RENDER");
     return (
       <View style={[styles.container, this.props.style]}>
-        <Text>Login page 1</Text>
-        <Text>Title: {title}</Text>
-        <Text>Data: {data}</Text>
-        <TextInput
-           style={styles.TextInput}
-           placeholder="user name."
-           onChangeText={(text) => this.setState({text})}
-         />
-         <TextInput
-           style={styles.TextInput}
-           placeholder="password."
-           onChangeText={(text) => this.setState({text})}
-         />
-        {/* <Button onPress={() => Actions.loginModal2({data: "Custom data2", title: "Custom title2"})}>Login 2</Button>
-        <Button onPress={() => Actions.refresh({title: "Changed title", data: "Changed data"})}>Change title</Button> */}
-        <Button onPress={Actions.pop}>Back</Button>
+        <Text style={styles.TextTitle}>搜尋車友</Text>
+        <Text style={styles.SmallTitle}>輸入id開始尋找你的朋友</Text>
+        <View style={styles.LastNextStep}>
+          <Button style={{width:250}} onPress={Actions.pop}>上一步</Button>
+          <Button style={{width:250}} onPress={Actions.MenuModal}>下一步</Button>
+        </View>
       </View>
     );
   }
