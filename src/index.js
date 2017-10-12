@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {AppRegistry, StyleSheet, Text, View, Navigator} from 'react-native';
 import Launch from './components/Launch';
 import Register from './components/Register';
-import Login from './components/Login';
+import searchFriend from './components/searchFriend';
 import Login2 from './components/Login2';
 import Login3 from './components/Login3';
 import CardStackStyleInterpolator from 'react-navigation/src/views/CardStackStyleInterpolator';
@@ -121,8 +121,14 @@ const Example = () => (
         </Lightbox>
         <Scene key="error" component={ErrorModal} />
         
-        {/* 這才是Login */}
-        <Stack key="login" titleStyle={{ alignSelf: 'center' }} hideNavBar>
+        {/* 主要路徑 */}
+        <Stack key="TravelTracker" titleStyle={{ alignSelf: 'center' }} hideNavBar>
+          <Scene
+            key="searchFriend"
+            component={searchFriend}
+            leftTitle="Cancel"
+            onLeft={Actions.pop}
+          />
           <Tabs
             swipeEnabled
             showLabel={false}
@@ -131,13 +137,13 @@ const Example = () => (
             inactiveBackgroundColor="rgba(255, 0, 0, 0.5)"
             tabBarPosition={"bottom"}
           >
-          <Stack key="tab_3">
-            <Scene key="tab_3_1" component={Menu} back title="主頁" icon={TabIcon} 
+          <Stack key="MenuModal">
+            <Scene key="MenuModal_2" component={Menu} back title="主頁" icon={TabIcon} 
             onLeft={() => alert('Left button!')} leftTitle="Left" />
           </Stack>
 
-          <Stack key="tab_5">
-            <Scene key="tab_5_1" component={Setting} title="設定" icon={TabIcon} leftTitle=""
+          <Stack key="SettingModal">
+            <Scene key="SettingModal_2" component={Setting} title="設定" icon={TabIcon} leftTitle=""
             onLeft={() => { }} />
           </Stack>
           </Tabs>

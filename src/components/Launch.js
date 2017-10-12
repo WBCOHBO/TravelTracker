@@ -51,11 +51,11 @@ class Launch extends React.Component {
         <Text style={styles.SmallTitle}>Travel Tracker</Text>
         <View style={styles.buttonContainer}>
         <Button 
-        title="登入" onPress={() => Actions.login({ data: '', title: '' })}
+        title="登入" onPress={() => Actions.searchFriend({ data: '', title: '' })}
         color="#81D8D0"
          />
         <Text style={styles.or}>----------------------或----------------------</Text>
-          <Button style={{}} title="使用facebook登入" onPress={Actions.login} />
+          <Button style={{}} title="使用facebook登入" onPress={Actions.searchFriend} />
         <View>
         <TouchableOpacity onPress={Actions.register}>
            <Text style={{height: 80, textAlign: 'center',}}> 沒有帳號？點我註冊 </Text>
