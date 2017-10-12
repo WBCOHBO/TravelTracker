@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {AppRegistry, StyleSheet, Text, View, Navigator} from 'react-native';
 import Launch from './components/Launch';
 import Register from './components/Register';
-import Login from './components/Login';
+import searchFriend from './components/searchFriend';
 import Login2 from './components/Login2';
 import Login3 from './components/Login3';
 import CardStackStyleInterpolator from 'react-navigation/src/views/CardStackStyleInterpolator';
@@ -121,11 +121,11 @@ const Example = () => (
         </Lightbox>
         <Scene key="error" component={ErrorModal} />
         
-        {/* 這才是Login */}
-        <Stack key="login" titleStyle={{ alignSelf: 'center' }} hideNavBar>
+        {/* 主要路徑 */}
+        <Stack key="TravelTracker" titleStyle={{ alignSelf: 'center' }} hideNavBar>
           <Scene
             key="searchFriend"
-            component={Login}
+            component={searchFriend}
             leftTitle="Cancel"
             onLeft={Actions.pop}
           />

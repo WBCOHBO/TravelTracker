@@ -56,7 +56,7 @@ class Launch extends React.Component {
          />
         <View style={styles.buttonContainer}>
           {/* <Text>Welcome</Text> */}
-          <Button title="登入" onPress={() => Actions.login({ data: '', title: '' })} />
+          <Button title="登入" onPress={() => Actions.searchFriend({ data: '', title: '' })} />
           {/* <Button title="Go to Register page" onPress={Actions.register} /> */}
           {/* <Button title="Display Error Modal" onPress={Actions.error} /> */}
           {/* <Button title="Display Lightbox" onPress={Actions.demo_lightbox} /> */}
