@@ -51,7 +51,7 @@ class Launch extends React.Component {
         <Text style={styles.SmallTitle}>Travel Tracker</Text>
         <View style={styles.buttonContainer}>
         <Button 
-        title="登入" onPress={() => Actions.searchFriend({ data: '', title: '' })}
+        title="登入" onPress={Actions.searchFriend}
         color="#81D8D0"
          />
         <Text style={styles.or}>----------------------或----------------------</Text>

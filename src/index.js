@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {AppRegistry, StyleSheet, Text, View, Navigator} from 'react-native';
-import Launch from './components/Launch';
+import Login from './components/Login';
 import Register from './components/Register';
 import searchFriend from './components/searchFriend';
 import Login2 from './components/Login2';
@@ -59,7 +59,7 @@ const Example = () => (
             titleStyle={{ alignSelf: 'center' }}
           >
             <Scene key="echo" back clone component={EchoView} getTitle={({ navigation }) => navigation.state.key} />
-            <Scene key="launch" component={Launch} title="Launch" initial />
+            <Scene key="Login" component={Login} title="Login" initial />
 
             <Stack
               back
@@ -126,8 +126,6 @@ const Example = () => (
           <Scene
             key="searchFriend"
             component={searchFriend}
-            leftTitle="Cancel"
-            onLeft={Actions.pop}
           />
           <Tabs
             swipeEnabled

@@ -63,6 +63,7 @@ export default class extends React.Component {
     }
 }
 
+// ListView
 renderRow(rowData){
     return (
         <TouchableHighlight style={styles.containerCell}>
@@ -74,6 +75,7 @@ renderRow(rowData){
         </TouchableHighlight>
     )
 }
+// 搜尋id
 filterSearch(text){
     const newData = data.filter(function(item){
         const itemData = item.friend.toUpperCase()
@@ -116,7 +118,7 @@ render(){
             </Animated.View>
 
            <View style={styles.LastNextStep}>
-              <Button style={{width:250}} onPress={Actions.pop}>上一步</Button>
+              <Button style={{width:250}} onPress={Actions.Login}>上一步</Button>
               <Button style={{width:250}} onPress={Actions.MenuModal}>下一步</Button>
             </View>                        
         </View>
