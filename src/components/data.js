@@ -30,5 +30,21 @@ export default data = [
     {
         id: 5,
         friend: 'test2',
+    },
+    {
+        id: 6,
+        friend: 'test3',
+    },
+    {
+        id: 7,
+        friend: 'test4',
+    },
+    {
+        id: 8,
+        friend: 'test5',
+    },
+    {
+        id: 9,
+        friend: 'test6',
     }
 ]

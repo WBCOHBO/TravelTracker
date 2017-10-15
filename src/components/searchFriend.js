@@ -4,6 +4,8 @@ import Button from "react-native-button";
 import {Actions} from "react-native-router-flux";
 import data from '../components/data';
 
+const {width, height} = Dimensions.get('window')
+
 const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -23,7 +25,7 @@ const styles = StyleSheet.create({
         height: 50,
         borderWidth: 1,
         borderColor: '#cecece',
-        marginBottom: 50,
+        marginBottom: 30,
         marginHorizontal: 50
     },
     content: {
@@ -46,10 +48,11 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     LastNextStep:{
-      flex:1,
+      flex:0.15,
       flexDirection: 'row',    
       justifyContent: "center",
       alignItems: "center",
+      backgroundColor: 'white',
     },
   });
 
@@ -94,11 +97,6 @@ render(){
                 style={[styles.content, {
                     backgroundColor: 'white',
                     flex: 1.3,
-                    transform: [
-                        {
-                            perspective: 450
-                        },
-                    ]
                 }]}
             >
             <Text style={styles.TextTitle}>搜尋車友</Text>
