@@ -12,7 +12,7 @@ export default Teamdata = [
         user: 'https://www.appcoda.com.tw/wp-content/uploads/2015/04/react-native-1024x631.png',
     },
     {
-        friend: '吃雞吧',
+        team: '吃雞吧',
         user: 'https://www.appcoda.com.tw/wp-content/uploads/2015/04/react-native-1024x631.png',
     },
     {

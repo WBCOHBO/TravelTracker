@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet,TouchableOpacity } from 'react-native';
 import Button from 'react-native-button';
 import { Actions } from 'react-native-router-flux';
+// import Modal from 'react-native-modal';
 
 const styles = StyleSheet.create({
   container: {
