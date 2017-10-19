@@ -137,7 +137,7 @@ const Example = () => (
           >
           <Stack key="MenuModal">
             <Scene key="MenuModal_2" component={Menu} back title="主頁" icon={TabIcon} 
-            onLeft={() => alert('Left button!')} leftTitle="Left" />
+            />
           </Stack>
 
           <Stack key="SettingModal">

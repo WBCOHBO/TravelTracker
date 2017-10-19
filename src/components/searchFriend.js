@@ -8,8 +8,7 @@ const {width, height} = Dimensions.get('window')
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      // backgroundColor: '#555566'
+      flex: 1,      
     },
     TextTitle:{
       marginTop:50,
