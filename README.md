@@ -34,3 +34,12 @@
 先checkout到develop或master，
 <br>
 `git merge 要合併的分支`
+<br>
+### 功能對應位置
+登入畫面：src -> components -> Login
+<br>
+搜尋車友：src -> components -> searchFriend
+<br>
+主頁：src -> components -> Menu
+<br>
+主頁、設定Bar：src -> index(第23、134、135行)
