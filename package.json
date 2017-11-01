@@ -13,6 +13,7 @@
 		"react": "16.0.0-alpha.12",
 		"react-native": "0.48.1",
 		"react-native-deprecated-custom-components": "^0.1.1",
+		"react-native-fbsdk": "^0.6.3",
 		"react-native-message-bar": "^2.0.4",
 		"react-native-modalbox": "^1.4.2",
 		"react-native-navigator": "^0.4.2",

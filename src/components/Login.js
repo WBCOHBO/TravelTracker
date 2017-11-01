@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Text, StyleSheet, Button, TextInput, TouchableOpacity  } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { MessageBarManager } from 'react-native-message-bar';
+const FBSDK = require('react-native-fbsdk');
+const {LoginButton, AccessToken} = FBSDK;
 
 const styles = StyleSheet.create({
   container: {
@@ -42,29 +44,50 @@ const styles = StyleSheet.create({
   // },
 });
 
-class Launch extends React.Component {
+class Login extends React.Component {
   
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.TextTitle}>智慧行車趣</Text>
-        <Text style={styles.SmallTitle}>Travel Tracker</Text>
-        <View style={styles.buttonContainer}>
-        <Button 
-        title="登入" onPress={Actions.searchFriend}
-        color="#81D8D0"
-         />
-        <Text style={styles.or}>----------------------或----------------------</Text>
-          <Button style={{}} title="使用facebook登入" onPress={Actions.searchFriend} />
-        <View>
-        <TouchableOpacity onPress={Actions.register}>
-           <Text style={{height: 80, textAlign: 'center',}}> 沒有帳號？點我註冊 </Text>
-        </TouchableOpacity>
-        </View>
-        </View>
-      </View>
+      // <View style={styles.container}>
+      //   <Text style={styles.TextTitle}>智慧行車趣</Text>
+      //   <Text style={styles.SmallTitle}>Travel Tracker</Text>
+      //   <View style={styles.buttonContainer}>
+      //   <Button 
+      //   title="登入" onPress={Actions.searchFriend}
+      //   color="#81D8D0"
+      //    />
+      //   <Text style={styles.or}>----------------------或----------------------</Text>
+      //     <Button style={{}} title="使用facebook登入" onPress={Actions.searchFriend} />
+      //   <View>
+      //   <TouchableOpacity onPress={Actions.register}>
+      //      <Text style={{height: 80, textAlign: 'center',}}> 沒有帳號？點我註冊 </Text>
+      //   </TouchableOpacity>
+      //   </View>
+      //   </View>
+      // </View>
+
+      <View>
+      <LoginButton
+        publishPermissions={["publish_actions"]}
+        onLoginFinished={
+          (error, result) => {
+            if (error) {
+              alert("login has error: " + result.error);
+            } else if (result.isCancelled) {
+              alert("login is cancelled.");
+            } else {
+              AccessToken.getCurrentAccessToken().then(
+                (data) => {
+                  alert(data.accessToken.toString())
+                }
+              )
+            }
+          }
+        }
+        onLogoutFinished={() => alert("logout.")}/>
+    </View>
     );
   }
 }
 
-export default Launch;
+export default Login;
