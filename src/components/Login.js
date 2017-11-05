@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { View, Text, TouchableHighlight, StyleSheet, Button, TextInput, TouchableOpacity  } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { MessageBarManager } from 'react-native-message-bar';
-import { LoginManager } from 'react-native-fbsdk';
-import * as firebase from "firebase";
+import { LoginManager, AccessToken } from 'react-native-fbsdk';
+import firebase from "firebase";
 
 const styles = StyleSheet.create({
   // container: {
@@ -60,21 +60,31 @@ const styles = StyleSheet.create({
   },
 });
 
+var config = {
+  apikey: 'AIzaSyC-fB6VrKjpBv1znS3GfJor3FEwEN-BLow',
+  authDomain: 'traveltracker-9cff9.firebaseapp.com/', 
+  databaseURL: 'https://traveltracker-9cff9.firebaseio.com/'
+}
+
+const firebaseRef = firebase.initializeApp(config)
+
 class Login extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
-  }
-
   _fbAuth() {
     LoginManager.logInWithReadPermissions(['public_profile']).then(function(result) {
       if (result.isCancelled) {
         alert('Login cancelled');
       } else {
-        alert('Login success with permissions: '
-          +result.grantedPermissions.toString());
+        AccessToken.getCurrentAccessToken().then((accessTokenData) => {
+          const credential = firebase.auth.FacebookAuthProvider.credential(accessTokenData.accessToken)
+          firebase.auth().signInWithCredential(credential).then((result) => {
+            //Promise was successful
+          }, (error) => {
+            //Promise was rejected
+            console.log(error)
+          })
+        }, (error => {
+          console.log('Some error occurred:' + error)
+        }))
       }
     },
     function(error) {
