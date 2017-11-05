@@ -1,38 +1,38 @@
-import React from 'react';
-import { View, Text, StyleSheet, Button, TextInput, TouchableOpacity  } from 'react-native';
+import React, { Component, PropTypes } from 'react';
+import { View, Text, TouchableHighlight, StyleSheet, Button, TextInput, TouchableOpacity  } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { MessageBarManager } from 'react-native-message-bar';
-const FBSDK = require('react-native-fbsdk');
-const {LoginButton, AccessToken} = FBSDK;
+import { LoginManager } from 'react-native-fbsdk';
+import * as firebase from "firebase";
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    // backgroundColor: 'transparent',
+  // container: {
+  //   flex: 1,
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  //   // backgroundColor: 'transparent',
     
-  },
-  TextTitle: {
-    textAlign: 'center',
-    fontSize: 30,
-  },
-  SmallTitle:{
-    height:60,
-    textAlign: 'center',
-    fontSize: 20,
-  },
-  or:{
-    textAlign: 'center',
-    fontSize: 15,
-  },
-  buttonContainer:{
-    // flex: 1,
-    // marginLeft: 100,
-    // marginRight: 100,
-    borderRadius: 1,
+  // },
+  // TextTitle: {
+  //   textAlign: 'center',
+  //   fontSize: 30,
+  // },
+  // SmallTitle:{
+  //   height:60,
+  //   textAlign: 'center',
+  //   fontSize: 20,
+  // },
+  // or:{
+  //   textAlign: 'center',
+  //   fontSize: 15,
+  // },
+  // buttonContainer:{
+  //   // flex: 1,
+  //   // marginLeft: 100,
+  //   // marginRight: 100,
+  //   borderRadius: 1,
     
-  },
+  // },
   // button: {
   //   marginLeft: 200,
   //   marginRight: 50,
@@ -42,10 +42,45 @@ const styles = StyleSheet.create({
   //   alignItems: 'center',
   //   justifyContent: 'center',
   // },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
 });
 
 class Login extends React.Component {
-  
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+  }
+
+  _fbAuth() {
+    LoginManager.logInWithReadPermissions(['public_profile']).then(function(result) {
+      if (result.isCancelled) {
+        alert('Login cancelled');
+      } else {
+        alert('Login success with permissions: '
+          +result.grantedPermissions.toString());
+      }
+    },
+    function(error) {
+      alert('Login fail with error: ' + error);
+    })
+  }
   render() {
     return (
       // <View style={styles.container}>
@@ -66,26 +101,14 @@ class Login extends React.Component {
       //   </View>
       // </View>
 
-      <View>
-      <LoginButton
-        publishPermissions={["publish_actions"]}
-        onLoginFinished={
-          (error, result) => {
-            if (error) {
-              alert("login has error: " + result.error);
-            } else if (result.isCancelled) {
-              alert("login is cancelled.");
-            } else {
-              AccessToken.getCurrentAccessToken().then(
-                (data) => {
-                  alert(data.accessToken.toString())
-                }
-              )
-            }
-          }
-        }
-        onLogoutFinished={() => alert("logout.")}/>
-    </View>
+      <View style={styles.container}>
+       <TouchableOpacity onPress={this._fbAuth}>
+         <Text>
+           Login With Facebook
+         </Text>
+       </TouchableOpacity>
+      </View>
+ 
     );
   }
 }
