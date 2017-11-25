@@ -4,6 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import { MessageBarManager } from 'react-native-message-bar';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import firebase from "firebase";
+import {FBLogin, FBLoginManager} from 'react-native-facebook-login';
 
 const styles = StyleSheet.create({
   // container: {
@@ -70,26 +71,19 @@ const firebaseRef = firebase.initializeApp(config)
 
 class Login extends React.Component {
   _fbAuth() {
-    LoginManager.logInWithReadPermissions(['public_profile']).then(function(result) {
-      if (result.isCancelled) {
-        alert('Login cancelled');
-      } else {
-        AccessToken.getCurrentAccessToken().then((accessTokenData) => {
-          const credential = firebase.auth.FacebookAuthProvider.credential(accessTokenData.accessToken)
-          firebase.auth().signInWithCredential(credential).then((result) => {
-            //Promise was successful
-          }, (error) => {
-            //Promise was rejected
-            console.log(error)
-          })
-        }, (error => {
-          console.log('Some error occurred:' + error)
-        }))
+    LoginManager.logInWithReadPermissions(['public_profile']).then(
+      function(result) {
+        if (result.isCancelled) {
+          alert('Login was cancelled');
+        } else {
+          alert('Login was successful with permissions: '
+            + result.grantedPermissions.toString());
+        }
+      },
+      function(error) {
+        alert('Login failed with error: ' + error);
       }
-    },
-    function(error) {
-      alert('Login fail with error: ' + error);
-    })
+    );
   }
   render() {
     return (
