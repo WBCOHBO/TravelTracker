@@ -4,68 +4,50 @@ import { Actions } from 'react-native-router-flux';
 import { MessageBarManager } from 'react-native-message-bar';
 
 const styles = StyleSheet.create({
-  login:{
+  button:{
     backgroundColor: '#9FE8D9',
     width : 200, 
     textAlign: 'center',
     borderRadius: 30,
     padding: 5, 
     color : '#ffffff',
+    fontWeight: '500',
     
   },
-  facebook : {
-    backgroundColor: '#539BEF',
-    width: 200,
-    textAlign: 'center',
-    borderRadius: 30,
-    padding: 5,
-    color: '#ffffff',
-    marginTop : 20,
-  },
+
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    // backgroundColor: 'transparent',
+    backgroundColor: '#696969',
     
   },
   TextTitle: {
+    color:'#333333',
     textAlign: 'center',
     fontSize: 30,
+    fontWeight : '900',
+    color : '#ffffff' 
   },
   SmallTitle:{
     height:60,
     textAlign: 'center',
     fontSize: 20,
+    fontWeight: '400', 
+    color: '#ffffff' 
   },
   or:{
     height:1,
     width : 100 ,
-    backgroundColor:'#95989A',
+    backgroundColor:'#C3D0C7',
     marginLeft : 10,
     marginRight :10 ,
   },
   orText:{
     position:'relative',
     top : -10,
+    color: '#ffffff' 
   },
-  buttonContainer:{
-    // flex: 1,
-    // marginLeft: 100,
-    // marginRight: 100,
-    borderRadius: 1,
-    
-  },
-
-  // button: {
-  //   marginLeft: 200,
-  //   marginRight: 50,
-  //   padding: 5,
-  //   backgroundColor: '#406E9F',
-  //   borderRadius: 9,
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  // },
 });
 
 class Launch extends React.Component {
@@ -77,12 +59,7 @@ class Launch extends React.Component {
         <Text style={styles.SmallTitle}>Travel Tracker</Text>
         <View>
           <TouchableOpacity onPress={Actions.searchFriend}>
-            <Text style={styles.login}> 登入 </Text>
-          </TouchableOpacity>
-        </View>
-        <View>
-          <TouchableOpacity onPress={Actions.searchFriend}>
-            <Text style={styles.facebook}> 使用facebook登入 </Text>
+            <Text style={styles.button}> 登入 </Text>
           </TouchableOpacity>
         </View>
         <View style={{ flexDirection: 'row-reverse', marginTop: 20 }}>
@@ -90,14 +67,18 @@ class Launch extends React.Component {
           <Text style={styles.orText}>或</Text>
           <Text style={styles.or}></Text>
         </View>
+        <View>
+          <TouchableOpacity onPress={Actions.searchFriend}>
+            <Text style={[styles.button, { backgroundColor: '#539BEF',}]}> 使用facebook登入 </Text>
+          </TouchableOpacity>
+        </View>
+
           <View>
           <TouchableOpacity onPress={Actions.register}>
-            <Text style={{height: 80, textAlign: 'center',}}> 沒有帳號？點我註冊 </Text>
+            <Text style={{ height: 80, textAlign: 'center', marginTop: 10,color : '#ffffff' }}> 沒有帳號？點我註冊 </Text>
           </TouchableOpacity>
           </View>
-        {/* </View> */}
       </View>
-      
     );
   }
 }
