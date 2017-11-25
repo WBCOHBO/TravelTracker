@@ -18,6 +18,7 @@ import MessageBar from './components/MessageBar';
 import ErrorModal from './components/modal/ErrorModal';
 import DemoLightbox from './components/lightbox/DemoLightbox';
 import MenuIcon from './images/menu_burger.png';
+import FileUpload from './components/FileUpload';
 
 const styles = StyleSheet.create({
   tabBarStyle: {
@@ -59,7 +60,7 @@ const Example = () => (
             titleStyle={{ alignSelf: 'center' }}
           >
             <Scene key="echo" back clone component={EchoView} getTitle={({ navigation }) => navigation.state.key} />
-            <Scene key="Login" component={Login} title="Login" initial />
+            <Scene key="Login" component={FileUpload} title="Login" initial />
 
             <Stack
               back
