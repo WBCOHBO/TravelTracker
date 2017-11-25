@@ -4,6 +4,24 @@ import { Actions } from 'react-native-router-flux';
 import { MessageBarManager } from 'react-native-message-bar';
 
 const styles = StyleSheet.create({
+  login:{
+    backgroundColor: '#9FE8D9',
+    width : 200, 
+    textAlign: 'center',
+    borderRadius: 30,
+    padding: 5, 
+    color : '#ffffff',
+    
+  },
+  facebook : {
+    backgroundColor: '#539BEF',
+    width: 200,
+    textAlign: 'center',
+    borderRadius: 30,
+    padding: 5,
+    color: '#ffffff',
+    marginTop : 20,
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -21,8 +39,15 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   or:{
-    textAlign: 'center',
-    fontSize: 15,
+    height:1,
+    width : 100 ,
+    backgroundColor:'#95989A',
+    marginLeft : 10,
+    marginRight :10 ,
+  },
+  orText:{
+    position:'relative',
+    top : -10,
   },
   buttonContainer:{
     // flex: 1,
@@ -31,6 +56,7 @@ const styles = StyleSheet.create({
     borderRadius: 1,
     
   },
+
   // button: {
   //   marginLeft: 200,
   //   marginRight: 50,
@@ -49,20 +75,29 @@ class Launch extends React.Component {
       <View style={styles.container}>
         <Text style={styles.TextTitle}>智慧行車趣</Text>
         <Text style={styles.SmallTitle}>Travel Tracker</Text>
-        <View style={styles.buttonContainer}>
-        <Button 
-        title="登入" onPress={Actions.searchFriend}
-        color="#81D8D0"
-         />
-        <Text style={styles.or}>----------------------或----------------------</Text>
-          <Button style={{}} title="使用facebook登入" onPress={Actions.searchFriend} />
         <View>
-        <TouchableOpacity onPress={Actions.register}>
-           <Text style={{height: 80, textAlign: 'center',}}> 沒有帳號？點我註冊 </Text>
-        </TouchableOpacity>
+          <TouchableOpacity onPress={Actions.searchFriend}>
+            <Text style={styles.login}> 登入 </Text>
+          </TouchableOpacity>
         </View>
+        <View>
+          <TouchableOpacity onPress={Actions.searchFriend}>
+            <Text style={styles.facebook}> 使用facebook登入 </Text>
+          </TouchableOpacity>
         </View>
+        <View style={{ flexDirection: 'row-reverse', marginTop: 20 }}>
+          <Text style={styles.or}></Text>
+          <Text style={styles.orText}>或</Text>
+          <Text style={styles.or}></Text>
+        </View>
+          <View>
+          <TouchableOpacity onPress={Actions.register}>
+            <Text style={{height: 80, textAlign: 'center',}}> 沒有帳號？點我註冊 </Text>
+          </TouchableOpacity>
+          </View>
+        {/* </View> */}
       </View>
+      
     );
   }
 }
