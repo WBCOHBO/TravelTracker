@@ -26,15 +26,14 @@ public class MainApplication extends Application implements ReactApplication {
   
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
     @Override
-    public boolean getUseDeveloperSupport() {
-      return BuildConfig.DEBUG;
-    }
+    public boolean isDebug() {
+    return BuildConfig.DEBUG;
+  }
 
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
-          new FacebookLoginPackage()
+         new FBSDKPackage(mCallbackManager)
       );
     }
   };
@@ -49,6 +48,6 @@ public class MainApplication extends Application implements ReactApplication {
   super.onCreate();
   FacebookSdk.sdkInitialize(getApplicationContext());
   // If you want to use AppEventsLogger to log events.
-  AppEventsLogger.activateApp(this);
+  // AppEventsLogger.activateApp(this);
   }
 }

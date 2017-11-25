@@ -6,50 +6,49 @@ import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import firebase from "firebase";
 
 const styles = StyleSheet.create({
-  login:{
+  button:{
     backgroundColor: '#9FE8D9',
     width : 200, 
     textAlign: 'center',
     borderRadius: 30,
     padding: 5, 
     color : '#ffffff',
+    fontWeight: '500',
     
   },
-  facebook : {
-    backgroundColor: '#539BEF',
-    width: 200,
-    textAlign: 'center',
-    borderRadius: 30,
-    padding: 5,
-    color: '#ffffff',
-    marginTop : 20,
-  },
+
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    // backgroundColor: 'transparent',
+    backgroundColor: '#696969',
     
   },
   TextTitle: {
+    color:'#333333',
     textAlign: 'center',
     fontSize: 30,
+    fontWeight : '900',
+    color : '#ffffff' 
   },
   SmallTitle:{
     height:60,
     textAlign: 'center',
     fontSize: 20,
+    fontWeight: '400', 
+    color: '#ffffff' 
   },
   or:{
     height:1,
     width : 100 ,
-    backgroundColor:'#95989A',
+    backgroundColor:'#C3D0C7',
     marginLeft : 10,
     marginRight :10 ,
   },
   orText:{
     position:'relative',
     top : -10,
+    color: '#ffffff' 
   },
   buttonContainer:{
     // flex: 1,
