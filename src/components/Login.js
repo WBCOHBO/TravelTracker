@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Button, TextInput, TouchableOpacity  } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { MessageBarManager } from 'react-native-message-bar';
+import { AppRegistry, Image } from 'react-native';
 
 const styles = StyleSheet.create({
   button:{
@@ -10,9 +11,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     borderRadius: 30,
     padding: 5, 
-    color : '#ffffff',
-    fontWeight: '500',
-    
+    color: '#696969',
+    fontWeight: '300',
+    fontSize : 15,
   },
 
   container: {
@@ -47,19 +48,26 @@ const styles = StyleSheet.create({
     position:'relative',
     top : -10,
     color: '#ffffff' 
-  },
+  }, 
+
 });
 
 class Launch extends React.Component {
   
   render() {
     return (
+    
       <View style={styles.container}>
-        <Text style={styles.TextTitle}>智慧行車趣</Text>
-        <Text style={styles.SmallTitle}>Travel Tracker</Text>
+        <Image
+          style={[{ width: 100 }]}
+          source={require('../images/logo.png')}
+        />
+        
+        {/* <Text style={styles.TextTitle}>智慧行車趣</Text>
+        <Text style={styles.SmallTitle}>Travel Tracker</Text> */}
         <View>
           <TouchableOpacity onPress={Actions.searchFriend}>
-            <Text style={styles.button}> 登入 </Text>
+            <Text style={[styles.button, { marginTop:50 }]}> 登入 </Text>
           </TouchableOpacity>
         </View>
         <View style={{ flexDirection: 'row-reverse', marginTop: 20 }}>
@@ -69,7 +77,7 @@ class Launch extends React.Component {
         </View>
         <View>
           <TouchableOpacity onPress={Actions.searchFriend}>
-            <Text style={[styles.button, { backgroundColor: '#539BEF',}]}> 使用facebook登入 </Text>
+            <Text style={[styles.button, { backgroundColor: '#539BEF',color:'#ffffff'}]}> 使用facebook登入 </Text>
           </TouchableOpacity>
         </View>
 
