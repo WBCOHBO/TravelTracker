@@ -22,7 +22,8 @@
 		"react-native-navigator": "^0.4.2",
 		"react-native-router-flux": "^4.0.0-beta.21",
 		"react-navigation": "^1.0.0-beta.11",
-		"save": "^2.3.1"
+		"save": "^2.3.1",
+		"watchman": "^0.1.8"
 	},
 	"devDependencies": {
 		"babel-jest": "21.0.0",

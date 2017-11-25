@@ -4,36 +4,61 @@ import { Actions } from 'react-native-router-flux';
 import { MessageBarManager } from 'react-native-message-bar';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import firebase from "firebase";
-import {FBLogin, FBLoginManager} from 'react-native-facebook-login';
 
 const styles = StyleSheet.create({
-  // container: {
-  //   flex: 1,
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  //   // backgroundColor: 'transparent',
+  login:{
+    backgroundColor: '#9FE8D9',
+    width : 200, 
+    textAlign: 'center',
+    borderRadius: 30,
+    padding: 5, 
+    color : '#ffffff',
     
-  // },
-  // TextTitle: {
-  //   textAlign: 'center',
-  //   fontSize: 30,
-  // },
-  // SmallTitle:{
-  //   height:60,
-  //   textAlign: 'center',
-  //   fontSize: 20,
-  // },
-  // or:{
-  //   textAlign: 'center',
-  //   fontSize: 15,
-  // },
-  // buttonContainer:{
-  //   // flex: 1,
-  //   // marginLeft: 100,
-  //   // marginRight: 100,
-  //   borderRadius: 1,
+  },
+  facebook : {
+    backgroundColor: '#539BEF',
+    width: 200,
+    textAlign: 'center',
+    borderRadius: 30,
+    padding: 5,
+    color: '#ffffff',
+    marginTop : 20,
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    // backgroundColor: 'transparent',
     
-  // },
+  },
+  TextTitle: {
+    textAlign: 'center',
+    fontSize: 30,
+  },
+  SmallTitle:{
+    height:60,
+    textAlign: 'center',
+    fontSize: 20,
+  },
+  or:{
+    height:1,
+    width : 100 ,
+    backgroundColor:'#95989A',
+    marginLeft : 10,
+    marginRight :10 ,
+  },
+  orText:{
+    position:'relative',
+    top : -10,
+  },
+  buttonContainer:{
+    // flex: 1,
+    // marginLeft: 100,
+    // marginRight: 100,
+    borderRadius: 1,
+    
+  },
+
   // button: {
   //   marginLeft: 200,
   //   marginRight: 50,
