@@ -59,7 +59,7 @@ class Launch extends React.Component {
     
       <View style={styles.container}>
         <Image
-          style={[{ width: 100 }]}
+          style={[{ width: 175 }]}
           source={require('../images/logo.png')}
         />
         
@@ -67,7 +67,7 @@ class Launch extends React.Component {
         <Text style={styles.SmallTitle}>Travel Tracker</Text> */}
         <View>
           <TouchableOpacity onPress={Actions.searchFriend}>
-            <Text style={[styles.button, { marginTop:50 }]}> 登入 </Text>
+            <Text style={[styles.button, { marginTop:10 }]}> 登入 </Text>
           </TouchableOpacity>
         </View>
         <View style={{ flexDirection: 'row-reverse', marginTop: 20 }}>
