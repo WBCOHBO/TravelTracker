@@ -2,15 +2,15 @@ package com.traveltracker;
 
 import android.app.Application;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
-import com.facebook.soloader.SoLoader;
-import com.facebook.CallbackManager;
-import com.facebook.FacebookSdk;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
-import com.facebook.appevents.AppEventsLogger;
+import com.facebook.soloader.SoLoader;
 import com.magus.fblogin.FacebookLoginPackage;
 
 import java.util.Arrays;
@@ -33,7 +33,8 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-         new FBSDKPackage(mCallbackManager)
+          new MainReactPackage(),
+          new FBSDKPackage(mCallbackManager)
       );
     }
   };
@@ -44,10 +45,39 @@ public class MainApplication extends Application implements ReactApplication {
   }
 
   @Override
-  public void onCreate() {
-  super.onCreate();
-  FacebookSdk.sdkInitialize(getApplicationContext());
-  // If you want to use AppEventsLogger to log events.
-  // AppEventsLogger.activateApp(this);
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+
+    callbackManager = CallbackManager.Factory.create();
+
+    LoginManager.getInstance().registerCallback(callbackManager,
+            new FacebookCallback<LoginResult>() {
+                @Override
+                public void onSuccess(LoginResult loginResult) {
+                    // App code
+                }
+
+                @Override
+                public void onCancel() {
+                     // App code
+                }
+
+                @Override
+                public void onError(FacebookException exception) {
+                     // App code   
+                }
+    });
   }
+}
+
+
+public class MainActivity extends FragmentActivity {
+    CallbackManager callbackManager;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        callbackManager = CallbackManager.Factory.create();
+        LoginButton loginButton = (LoginButton) view.findViewById(R.id.usersettings_fragment_login_button);
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() { ... });
+    }
 }

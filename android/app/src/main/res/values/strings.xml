@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">TravelTracker</string>
     <string name="facebook_app_id">147888449159843</string>
-    <string name="fb_login_protocol_scheme">147888449159843</string>
+    <string name="fb_login_protocol_scheme">fb147888449159843</string>
 </resources>
