@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
 import firebase from '../api/firebase';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-  ListView,
-  TextInput,
-
-} from 'react-native';
-
+import Modal from 'react-native-modalbox';
+import {Platform, StyleSheet, Text, View, ListView, TextInput,} from 'react-native';
 
 export default class App extends Component {
 
@@ -27,13 +19,13 @@ export default class App extends Component {
       user.push({
           Username:this.state.username,
           Password:this.state.password,
-      },()=>alert("ok"))
+      },()=>alert("Welcome"))
     }
 
 
 render() {
     return (
-      <View Stytle={{flex:1}}>
+      <View style={[{ flex: 1 }]}>
         <TextInput placeholder={"username"} onChangeText={(value)=>this.setState({username:value})}/>        
         <TextInput placeholder={"password"} secureTextEntry={true} onChangeText={(value)=>this.setState({password:value})}/>
           <Text onPress={this.submit.bind(this)}>Submit</Text>

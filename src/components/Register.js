@@ -1,25 +1,44 @@
 import React from 'react';
-import { View, Text, StyleSheet,TouchableOpacity } from 'react-native';
+import {Platform, StyleSheet, Text, View, ListView, TextInput,Alert} from 'react-native';
 import Button from 'react-native-button';
 import { Actions } from 'react-native-router-flux';
-// import Modal from 'react-native-modal';
+import firebase from '../api/firebase';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+  submit:{
+    // flex: 1,
+    // flexDirection: 'column',
+    // justifyContent: 'center',
+    // alignItems: 'flex-start',
   },
 });
 
 export default class Register extends React.Component {
-  render() {
-    return <View style={styles.container}>
-      <Text>Register page</Text>
-      <Button onPress={()=>Actions.register2()}>Register</Button>
-      <Button onPress={Actions.home}>Replace screen</Button>
-      <Button onPress={Actions.pop}>Back</Button>
-    </View>
+  constructor(props)  {
+    super(props);
+    this.state={
+        username:'',
+        password:'',
+    }
+      database = firebase.database();
+      user=database.ref('User');
   }
+    
+    submit(){
+      user.push({
+          Username:this.state.username,
+          Password:this.state.password,
+      },Alert.alert("Hello", "Welcome")
+      )
+    }
+
+render() {
+    return (
+      <View>
+        <TextInput placeholder={"username"} onChangeText={(value)=>this.setState({username:value})}/>        
+        <TextInput placeholder={"password"} secureTextEntry={true} onChangeText={(value)=>this.setState({password:value})}/>
+        <Text style={[styles.submit]} onPress={this.submit.bind(this)}>Submit</Text>
+      </View>
+    );
+ }
 }
