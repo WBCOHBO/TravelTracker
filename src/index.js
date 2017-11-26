@@ -18,7 +18,6 @@ import MessageBar from './components/MessageBar';
 import ErrorModal from './components/modal/ErrorModal';
 import DemoLightbox from './components/lightbox/DemoLightbox';
 import MenuIcon from './images/menu_burger.png';
-import FileUpload from './components/FileUpload';
 
 const styles = StyleSheet.create({
   tabBarStyle: {
