@@ -43,3 +43,5 @@
 主頁：src -> components -> Menu
 <br>
 主頁、設定Bar：src -> index(第23、134、135行)
+<br>
+註冊：components -> Register
