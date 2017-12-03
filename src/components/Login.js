@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Button, TextInput, TouchableOpacity  } from 're
 import { Actions } from 'react-native-router-flux';
 import { MessageBarManager } from 'react-native-message-bar';
 import { AppRegistry, Image } from 'react-native';
+import Modal from 'react-native-modalbox';
 
 const styles = StyleSheet.create({
   button:{
