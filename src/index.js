@@ -59,7 +59,7 @@ const Example = () => (
             titleStyle={{ alignSelf: 'center' }}
           >
             <Scene key="echo" back clone component={EchoView} getTitle={({ navigation }) => navigation.state.key} />
-            <Scene key="Login" component={Login2} title="Login" initial />
+            <Scene key="Login" component={Login} title="Login" initial />
 
             <Stack
               back

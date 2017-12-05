@@ -24,11 +24,26 @@ export default class Register extends React.Component {
   }
   signup() {
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then(() => {
-      alert('註冊完成 系統將為你導入')
+      Alert.alert(
+        '註冊成功',
+        '請按左上角返回登入頁',
+        [
+          {text: 'OK', onPress: () => console.log('OK Pressed')},
+        ],
+        { cancelable: false }
+      )
     }).catch((error) => {
       var errorCode = error.code;
       var errorMessage = error.message;
-      alert(this.state.email + '註冊失敗' + errorMessage)
+      // alert(this.state.email + '註冊失敗' + errorMessage)
+      Alert.alert(
+        '註冊失敗',
+        (this.state.email + '註冊失敗' + errorMessage),
+        [
+          {text: 'OK', onPress: () => console.log('OK Pressed')},
+        ],
+        { cancelable: false }
+      )
     })
   }
 
@@ -54,9 +69,6 @@ export default class Register extends React.Component {
          <Text>Enter</Text>
         </TouchableOpacity>
        </View>
-       Auth.currentUser.getIdToken().then(function(data) {
-        console.log(data)
-      });
       </View>
     )
   };
@@ -78,6 +90,17 @@ export default class Register extends React.Component {
 //         Password:this.state.password,
 //     },Alert.alert("Hello", "Welcome")
 //     )
+    
+//   }
+
+//   getUid(){
+//     firebase.auth().onAuthStateChanged(function(user) {
+//       if (user) {
+//         user.getIdToken().then(function(user) {
+//           console.log(user)
+//         });
+//       }
+//     });
 //   }
 
 // render() {
