@@ -135,7 +135,7 @@ class Launch extends React.Component {
         </Button>
       </View>
       <Modal style={[styles.modal, styles.modal3]} position={"center"} ref={"modal3"} >
-        <Text style={styles.PopText}>我有一隻小毛驢</Text>
+        <Text style={styles.PopText}>歡迎使用 TRAVEL TRACKER</Text>
           <View>
             <TextInput
               style={styles.textInput}
@@ -151,7 +151,7 @@ class Launch extends React.Component {
             />
             
             <Button onPress={this.signin.bind(this)} >
-             <Text>Enter</Text>
+             <Text>登入</Text>
             </Button>
           </View>
       </Modal>
