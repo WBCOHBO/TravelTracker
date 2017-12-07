@@ -8,6 +8,7 @@ import Button from 'react-native-button';
 import * as firebase from 'firebase';
 import apiFirebase from '../api/firebase';
 import searchFriend from '../components/searchFriend';
+import {StackNavigator} from 'react-navigation';
 
 const styles = StyleSheet.create({
   button:{
@@ -83,41 +84,46 @@ class Launch extends React.Component {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      // error: '',
+      // loading: ''
     }
   }
-  signin() {
+
+  signIn() {
+    // this.state({email: '', loading: ''});
+    // const{email, password} = this.state;
+
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-    .then(() => {
-      Alert.alert(
-        '登入成功',
-      )
-    })
-    .catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      if (errorCode === 'auth/wrong-password') {
-        Alert.alert(
-          '錯誤訊息',
-          '密碼錯誤',
-          [
-            {text: 'OK', onPress: () => console.log('OK Pressed')},
-          ],
-          { cancelable: false }
-        )
-      } else {
-        Alert.alert(
-          '錯誤訊息',
-          '帳號錯誤',
-          [
-            {text: 'OK', onPress: () => console.log('OK Pressed')},
-          ],
-          { cancelable: false }
-        )
-      }
-      console.log(error);
-    })
+      // this.state({error: '', loading: false});
+      this.props.navigation.navigate('Main');
+      
+    
+    // .catch(function(error) {
+    //   // Handle Errors here.
+    //   var errorCode = error.code;
+    //   var errorMessage = error.message;
+    //   if (errorCode === 'auth/wrong-password') {
+    //     Alert.alert(
+    //       '錯誤訊息',
+    //       '密碼錯誤',
+    //       [
+    //         {text: 'OK', onPress: () => console.log('OK Pressed')},
+    //       ],
+    //       { cancelable: false }
+    //     )
+    //   } else {
+    //     Alert.alert(
+    //       '錯誤訊息',
+    //       '帳號錯誤',
+    //       [
+    //         {text: 'OK', onPress: () => console.log('OK Pressed')},
+    //       ],
+    //       { cancelable: false }
+    //     )
+    //   } 
+    //   console.log(error);
+    // })
     
   }
 
@@ -145,12 +151,15 @@ class Launch extends React.Component {
             />
             <TextInput
              style={styles.textInput}
+             autoCorrect={false}
+             placeholder='*******'
+             secureTextEntry
              onChangeText={(text) => this.setState({password: text})}
              value={this.state.password}
              placeholder={"請輸入註冊密碼"}
             />
             
-            <Button onPress={this.signin.bind(this)} >
+            <Button onPress={this.signIn.bind(this)} >
              <Text>登入</Text>
             </Button>
           </View>
