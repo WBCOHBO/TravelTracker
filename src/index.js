@@ -5,7 +5,7 @@ import Register from './components/Register';
 import searchFriend from './components/searchFriend';
 import Login2 from './components/Login2';
 import Login3 from './components/Login3';
-import CardStackStyleInterpolator from 'react-navigation/src/views/CardStackStyleInterpolator';
+import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/CardStackStyleInterpolator';
 import {Scene, Router, Actions, Reducer, ActionConst, Overlay, Tabs, Modal, Drawer, Stack, Lightbox,} from 'react-native-router-flux';
 import Home from './components/Home';
 import DrawerContent from './components/drawer/DrawerContent';

@@ -86,7 +86,7 @@ class Launch extends React.Component {
       password: ''
     }
   }
-  signin() {
+  signIn() {
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
     .then(() => {
       Alert.alert(
@@ -144,13 +144,16 @@ class Launch extends React.Component {
              placeholder={"請輸入註冊信箱"}
             />
             <TextInput
-             style={styles.textInput}
-             onChangeText={(text) => this.setState({password: text})}
-             value={this.state.password}
-             placeholder={"請輸入註冊密碼"}
+            style={styles.textInput}
+            autoCorrect={false}
+            placeholder='*******'
+            secureTextEntry
+            onChangeText={(text) => this.setState({password: text})}
+            value={this.state.password}
+            placeholder={"請輸入註冊密碼"}
             />
             
-            <Button onPress={this.signin.bind(this)} >
+            <Button onPress={this.signIn.bind(this)} >
              <Text>登入</Text>
             </Button>
           </View>
