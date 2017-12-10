@@ -15,11 +15,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#9FE8D9',
     width : 200, 
     textAlign: 'center',
-  //  borderRadius: 30,
+    borderRadius: 30,
     padding: 5, 
     color: '#696969',
     fontWeight: '300',
     fontSize : 15,
+    
   },
 
   container: {
@@ -73,10 +74,13 @@ const styles = StyleSheet.create({
   textInput: {
     height: 50,
     borderWidth: 0,
-  //  borderColor: '#cecece',
+    borderColor: '#cecece',
     width: 200,
-    borderRadius:4,
+    borderRadius:30,
     marginBottom: 5,
+    color:'#ffffff',
+    textAlign:'center',
+
     // marginHorizontal: 50
 },
   PopText:{
@@ -84,9 +88,10 @@ const styles = StyleSheet.create({
     marginBottom: 20
   },
   errorTextStyle: {
-    fontSize: 20,
+    fontSize: 15,
     alignSelf: 'center',
-    color: 'red'
+    color: '#F08080',
+    marginTop: 5
   },
   spinnerStyle: {
     flex: 1,
@@ -134,13 +139,9 @@ class Launch extends React.Component {
           style={[{ width: 175 }]}
           source={require('../images/logo.png')}
         />
-      <View>
-        <Button onPress={() => this.refs.modal3.open()} style={styles.btn}>
-          <Text style={[styles.button, { marginTop:10 }]}> 登入 </Text>
-        </Button>
-      </View>
-      <Modal style={[styles.modal, styles.modal3]} position={"center"} ref={"modal3"} >
-        <Text style={styles.PopText}>歡迎使用 TRAVEL TRACKER</Text>
+
+      {/* <Modal style={[styles.modal, styles.modal3]} position={"center"} ref={"modal3"} > */}
+    
         
           <View>
             <TextInput
@@ -158,15 +159,19 @@ class Launch extends React.Component {
              value={this.state.password}
              placeholder={"請輸入註冊密碼"}
             />
-            
-            <Button style={styles.button} onPress={this.onButtonPress.bind(this)} >
-             <Text>登入</Text>
+          <View>
+            <Button onPress={this.onButtonPress.bind(this)} >
+              <Text style={[styles.button, { marginTop: 10 }]} > 登入 </Text>
             </Button>
+          </View>
+            {/* <Button style={styles.button} onPress={this.onButtonPress.bind(this)} >
+             <Text>登入</Text>
+            </Button> */}
             <Text style={styles.errorTextStyle}>
               {this.state.error}
             </Text>
           </View>
-      </Modal>
+      {/* </Modal> */}
       {/* <View style={{ flexDirection: 'row-reverse', marginTop: 20 }}>
         <Text style={styles.or}></Text>
         <Text style={styles.orText}>或</Text>
