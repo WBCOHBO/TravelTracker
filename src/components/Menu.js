@@ -152,9 +152,9 @@ render(){
               
 
               <Modal style={[styles.modal, styles.modal3]} position={"center"} ref={"modal3"} >
-                  <Text style={styles.PopText}>我有一隻小毛驢</Text>
-                  <Button onPress={Actions.searchFriend} style={styles.btn}>test1 </Button>
-                  <Button onPress={Actions.searchFriend} style={styles.btn}>test2 </Button>
+                  {/* <Text style={styles.PopText}>選擇功能</Text> */}
+                  <Button onPress={Actions.searchFriend} style={styles.btn}>開始跟車 </Button>
+                  {/* <Button onPress={Actions.searchFriend} style={styles.btn}>test2 </Button> */}
               </Modal>     
             </Animated.View>                        
         </View>
