@@ -119,10 +119,7 @@ class Launch extends React.Component {
       Alert.alert('歡迎','登入成功！',[{text:"OK",onPress:Actions.searchFriend}])
     })
       .catch(() => {
-        firebase.auth().createUserWithEmailAndPassword(email, password)
-          .catch(() => {
-            this.setState({ error: '帳號或密碼錯誤' })
-          });
+          this.setState({ error: '帳號或密碼錯誤' })
       });
     
     this.setState({ error: '' });
