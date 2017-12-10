@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#9FE8D9',
     width : 200, 
     textAlign: 'center',
-    borderRadius: 30,
+  //  borderRadius: 30,
     padding: 5, 
     color: '#696969',
     fontWeight: '300',
@@ -106,20 +106,24 @@ class Launch extends React.Component {
     }
   }
   
-
   state = { email: '', password: '', error: '' };
   onButtonPress() {
     const { email, password } = this.state;
-    firebase.auth().signInWithEmailAndPassword(email, password)
+    
+    firebase.auth().signInWithEmailAndPassword(email, password).then(()=>{
+      Alert.alert('訊息','登入成功！',[{text:"OK",onPress:Actions.searchFriend}])
+    })
       .catch(() => {
         firebase.auth().createUserWithEmailAndPassword(email, password)
           .catch(() => {
             this.setState({ error: 'Authentication Failed.' })
           });
       });
+    
     this.setState({ error: '' });
     this.setState({ error: '', loading: true });
-    // this.open.Actions.searchFriend;
+   
+    
 
   }
 
@@ -139,18 +143,19 @@ class Launch extends React.Component {
       </View>
       <Modal style={[styles.modal, styles.modal3]} position={"center"} ref={"modal3"} >
         <Text style={styles.PopText}>歡迎使用 TRAVEL TRACKER</Text>
+        
           <View>
             <TextInput
               style={styles.textInput}
              onChangeText={(text) => this.setState({email: text})}
              value={this.state.email}
-             placeholder={"請輸入註冊信箱"}
+             placeholder={"信箱"}
             />
             <TextInput
              style={styles.textInput}
              onChangeText={(text) => this.setState({password: text})}
              value={this.state.password}
-             placeholder={"請輸入註冊密碼"}
+             placeholder={"密碼"}
             />
             
             <Button style={styles.button} onPress={this.onButtonPress.bind(this)} >
@@ -158,7 +163,6 @@ class Launch extends React.Component {
             </Button>
             <Text style={styles.errorTextStyle}>
               {this.state.error}
-              
             </Text>
           </View>
       </Modal>
@@ -184,4 +188,3 @@ class Launch extends React.Component {
 }
 
 export default Launch;
-// export * from './Spinner';
