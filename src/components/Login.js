@@ -9,6 +9,7 @@ import * as firebase from 'firebase';
 import apiFirebase from '../api/firebase';
 import searchFriend from '../components/searchFriend';
 
+
 const styles = StyleSheet.create({
   button:{
     backgroundColor: '#9FE8D9',
@@ -56,7 +57,8 @@ const styles = StyleSheet.create({
   }, 
   modal3:{
     height: 300,
-    width: 300
+    width: 300,
+    borderRadius:4,
   },
   modal: {
     justifyContent: 'center',
@@ -70,12 +72,27 @@ const styles = StyleSheet.create({
   },
   textInput: {
     height: 50,
-    borderWidth: 1,
-    borderColor: '#cecece',
-    width: 200
-    // marginBottom: 30,
+    borderWidth: 0,
+  //  borderColor: '#cecece',
+    width: 200,
+    borderRadius:4,
+    marginBottom: 5,
     // marginHorizontal: 50
 },
+  PopText:{
+    fontSize: 18,
+    marginBottom: 20
+  },
+  errorTextStyle: {
+    fontSize: 20,
+    alignSelf: 'center',
+    color: 'red'
+  },
+  spinnerStyle: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
 });
 
 class Launch extends React.Component {
@@ -83,43 +100,29 @@ class Launch extends React.Component {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      // error:'',
+      // loading:false
     }
   }
-  signIn() {
-    firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-    .then(() => {
-      Alert.alert(
-        '登入成功',
-      )
-    })
-    .catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      if (errorCode === 'auth/wrong-password') {
-        Alert.alert(
-          '錯誤訊息',
-          '密碼錯誤',
-          [
-            {text: 'OK', onPress: () => console.log('OK Pressed')},
-          ],
-          { cancelable: false }
-        )
-      } else {
-        Alert.alert(
-          '錯誤訊息',
-          '帳號錯誤',
-          [
-            {text: 'OK', onPress: () => console.log('OK Pressed')},
-          ],
-          { cancelable: false }
-        )
-      }
-      console.log(error);
-    })
-    
+  
+
+  state = { email: '', password: '', error: '' };
+  onButtonPress() {
+    const { email, password } = this.state;
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .catch(() => {
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+          .catch(() => {
+            this.setState({ error: 'Authentication Failed.' })
+          });
+      });
+    this.setState({ error: '' });
+    this.setState({ error: '', loading: true });
+    // this.open.Actions.searchFriend;
+
   }
+
 
   render() {
     return (
@@ -144,18 +147,19 @@ class Launch extends React.Component {
              placeholder={"請輸入註冊信箱"}
             />
             <TextInput
-            style={styles.textInput}
-            autoCorrect={false}
-            placeholder='*******'
-            secureTextEntry
-            onChangeText={(text) => this.setState({password: text})}
-            value={this.state.password}
-            placeholder={"請輸入註冊密碼"}
+             style={styles.textInput}
+             onChangeText={(text) => this.setState({password: text})}
+             value={this.state.password}
+             placeholder={"請輸入註冊密碼"}
             />
             
-            <Button onPress={this.signIn.bind(this)} >
+            <Button style={styles.button} onPress={this.onButtonPress.bind(this)} >
              <Text>登入</Text>
             </Button>
+            <Text style={styles.errorTextStyle}>
+              {this.state.error}
+              
+            </Text>
           </View>
       </Modal>
       <View style={{ flexDirection: 'row-reverse', marginTop: 20 }}>
@@ -180,3 +184,4 @@ class Launch extends React.Component {
 }
 
 export default Launch;
+// export * from './Spinner';
