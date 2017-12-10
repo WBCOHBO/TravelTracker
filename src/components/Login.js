@@ -100,6 +100,16 @@ const styles = StyleSheet.create({
   },
 });
 
+class App extends React.Component {
+  render() {
+    return <Router>
+      <Scene key="root">
+        <Scene key="login" component={Login} title="Login" />
+        <Scene key="searchFriend" component={searchFriend} />
+      </Scene>
+    </Router>
+  }
+}
 class Launch extends React.Component {
   constructor(props) {
     super(props);
@@ -115,8 +125,10 @@ class Launch extends React.Component {
   onButtonPress() {
     const { email, password } = this.state;
     
-    firebase.auth().signInWithEmailAndPassword(email, password).then(()=>{
-      Alert.alert('歡迎','登入成功！',[{text:"OK",onPress:Actions.searchFriend}])
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .then(()=>{
+      // Alert.alert('歡迎','登入成功！',[{text:"OK",onPress:Actions.searchFriend}])
+      Actions.searchFriend()
     })
       .catch(() => {
           this.setState({ error: '帳號或密碼錯誤' })
