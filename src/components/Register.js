@@ -3,6 +3,7 @@ import {TouchableOpacity,Platform, StyleSheet, Text, View, ListView, TextInput,A
 import Button from 'react-native-button';
 import { Actions } from 'react-native-router-flux';
 import firebase from '../api/firebase';
+import Login from '../components/Login';
 
 
 const styles = StyleSheet.create({
@@ -23,15 +24,8 @@ export default class Register extends React.Component {
     };
   }
   signup() {
-    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then(() => {
-      Alert.alert(
-        '註冊成功',
-        '請按左上角返回登入頁',
-        [
-          {text: 'OK', onPress: () => console.log('OK Pressed')},
-        ],
-        { cancelable: false }
-      )
+    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then(()=>{
+      Alert.alert('歡迎','註冊成功！',[{text:"OK",onPress:Actions.Login}])
     }).catch((error) => {
       var errorCode = error.code;
       var errorMessage = error.message;

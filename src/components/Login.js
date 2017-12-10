@@ -111,19 +111,17 @@ class Launch extends React.Component {
     const { email, password } = this.state;
     
     firebase.auth().signInWithEmailAndPassword(email, password).then(()=>{
-      Alert.alert('訊息','登入成功！',[{text:"OK",onPress:Actions.searchFriend}])
+      Alert.alert('歡迎','登入成功！',[{text:"OK",onPress:Actions.searchFriend}])
     })
       .catch(() => {
         firebase.auth().createUserWithEmailAndPassword(email, password)
           .catch(() => {
-            this.setState({ error: 'Authentication Failed.' })
+            this.setState({ error: '帳號或密碼錯誤' })
           });
       });
     
     this.setState({ error: '' });
-    this.setState({ error: '', loading: true });
-   
-    
+    this.setState({ error: '', loading: true }); 
 
   }
 
@@ -149,13 +147,16 @@ class Launch extends React.Component {
               style={styles.textInput}
              onChangeText={(text) => this.setState({email: text})}
              value={this.state.email}
-             placeholder={"信箱"}
+             placeholder={"請輸入註冊信箱"}
             />
             <TextInput
              style={styles.textInput}
+             autoCorrect={false}
+             placeholder='*******'
+             secureTextEntry
              onChangeText={(text) => this.setState({password: text})}
              value={this.state.password}
-             placeholder={"密碼"}
+             placeholder={"請輸入註冊密碼"}
             />
             
             <Button style={styles.button} onPress={this.onButtonPress.bind(this)} >
@@ -166,7 +167,7 @@ class Launch extends React.Component {
             </Text>
           </View>
       </Modal>
-      <View style={{ flexDirection: 'row-reverse', marginTop: 20 }}>
+      {/* <View style={{ flexDirection: 'row-reverse', marginTop: 20 }}>
         <Text style={styles.or}></Text>
         <Text style={styles.orText}>或</Text>
         <Text style={styles.or}></Text>
@@ -175,7 +176,7 @@ class Launch extends React.Component {
         <TouchableOpacity onPress={Actions.searchFriend}>
           <Text style={[styles.button, { backgroundColor: '#539BEF',color:'#ffffff'}]}> 使用facebook登入 </Text>
         </TouchableOpacity>
-      </View>
+      </View> */}
 
       <View>
         <TouchableOpacity onPress={Actions.register}>
