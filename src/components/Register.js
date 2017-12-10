@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableOpacity,Platform, StyleSheet, Text, View, ListView, TextInput,Alert} from 'react-native';
+import { TouchableOpacity, Platform, StyleSheet, Text, View, ListView, TextInput, Alert, Image} from 'react-native';
 import Button from 'react-native-button';
 import { Actions } from 'react-native-router-flux';
 import firebase from '../api/firebase';
@@ -13,10 +13,47 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
     // alignItems: 'flex-start',
   },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#696969',
+    padding:50,
+    marginTop:-100,
+  },
+  main:{
+    width:200,
+  },
+  Title:{
+    fontSize:20,
+    color:'#ffffff',
+    
+  },
+  textInput:{
+    color:'#ffffff',
+    marginTop: 10,
+    textAlign: 'center',
+  },
+  chack:{
+    justifyContent:'flex-end',
+  }, 
+  button: {
+    backgroundColor: '#9FE8D9',
+    width: 200,
+    textAlign: 'center',
+    borderRadius: 30,
+    padding: 5,
+    color: '#696969',
+    fontWeight: '300',
+    fontSize: 15,
+    marginTop:20,
+  },
+
 });
 
 export default class Register extends React.Component {
   constructor(props) {
+   
     super(props);
     this.state = {
       email: '',
@@ -42,26 +79,37 @@ export default class Register extends React.Component {
   }
 
   render() {
+    
     return(
-      <View >
-       <Text>sign</Text>
-       <View>
-        <TextInput
-          
+        
+      <View style={styles.container}>
+      
+        <Image
+          style={[{ width: 175 }]}
+          source={require('../images/logo.png')}
+        />
+        <Text style={styles.Title}>註冊</Text>
+        
+       <View style={styles.main}>
+          <TextInput 
+          style={styles.textInput}
           onChangeText={(text) => this.setState({email: text})}
           value={this.state.email}
-          placeholder={"email"}
+          placeholder={"設定信箱"}
         />
         <TextInput
-          
+          style={styles.textInput}
           onChangeText={(text) => this.setState({password: text})}
           value={this.state.password}
           secureTextEntry={true}
-          placeholder={"password"}
+          placeholder={"設定密碼"}
         />
-        <TouchableOpacity onPress={this.signup.bind(this)}>
-         <Text>Enter</Text>
-        </TouchableOpacity>
+         
+            <TouchableOpacity  onPress={this.signup.bind(this)}>
+              <Text style={styles.button}>註冊</Text>
+            </TouchableOpacity>
+          
+        
        </View>
       </View>
     )
