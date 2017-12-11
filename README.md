@@ -17,7 +17,7 @@
 `git checkout develop`
 <br>
 `git pull`
-### 新增新功能時
+### 新增新功能時：
 `git checkout -b feature/name`
 <br>
 `git fetch origin`
@@ -30,12 +30,15 @@
 `git commit -m "新增主旨"`
 <br>
 `git push origin 新分支名稱`
-### 合併到develop或master
+### 合併到develop或master：
 先checkout到develop或master，
 <br>
 `git merge 要合併的分支`
 <br>
-### 功能對應位置
+### 在別的分支更新develop code：
+<br>`git pull origin develop`<br>
+
+### 功能對應位置：
 登入畫面：src -> components -> Login
 <br>
 搜尋車友：src -> components -> searchFriend
@@ -44,4 +47,8 @@
 <br>
 主頁、設定Bar：src -> index(第23、134、135行)
 <br>
+<<<<<<< HEAD
 註冊：components -> Register
+=======
+註冊頁：src -> components -> Register
+>>>>>>> origin
