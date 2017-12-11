@@ -18,6 +18,7 @@ import MessageBar from './components/MessageBar';
 import ErrorModal from './components/modal/ErrorModal';
 import DemoLightbox from './components/lightbox/DemoLightbox';
 import MenuIcon from './images/menu_burger.png';
+import map from './components/map';
 
 const styles = StyleSheet.create({
   tabBarStyle: {
@@ -145,6 +146,10 @@ const Example = () => (
             onLeft={() => { }} />
           </Stack>
           </Tabs>
+          <Scene
+            key="map"
+            component={map}
+          />
         </Stack>
       </Modal>
 
